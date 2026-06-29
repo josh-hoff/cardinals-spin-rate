@@ -480,5 +480,8 @@ schedule_pipeline <- function() {
 if (exists("PROJECT_DIR") && nchar(PROJECT_DIR) > 0) {
   setwd(PROJECT_DIR)
   run_pipeline()
-  schedule_pipeline()
+  # Only schedule on local machine, not on GitHub Actions
+  if (nchar(Sys.getenv("GITHUB_ACTIONS")) == 0) {
+    schedule_pipeline()
+  }
 }

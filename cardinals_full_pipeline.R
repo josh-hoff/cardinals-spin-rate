@@ -222,7 +222,9 @@ build_dashboard <- function(df) {
   log_msg("Building dashboard...")
   
   cols <- c("player_name","pitch_name","inning_numeric","inning","outs_when_up",
-            "release_spin_rate","release_speed","description","game_date")
+            "release_spin_rate","release_speed","description","game_date",
+            "game_pk","outing_progression","opponent","home_away","events","pitcher")
+  cols <- cols[cols %in% names(df)]
   df <- df[, cols]
   
   n_pitches  <- nrow(df)

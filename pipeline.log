@@ -1,0 +1,107 @@
+[2026-06-29 18:33:44] Installing package: cronR 
+[2026-06-29 18:33:52] ========== Pipeline started ========== 
+[2026-06-29 18:33:52] Attempting API pull from Baseball Savant... 
+[2026-06-29 18:33:52] Starting data pull from Baseball Savant... 
+[2026-06-29 18:33:52]   Pulling pitcher ID: 669467 
+[2026-06-29 18:33:55]     → 1622 pitches 
+[2026-06-29 18:33:58]   Pulling pitcher ID: 669461 
+[2026-06-29 18:33:58]     → 1445 pitches 
+[2026-06-29 18:34:01]   Pulling pitcher ID: 700241 
+[2026-06-29 18:34:04]     → 1605 pitches 
+[2026-06-29 18:34:07]   Pulling pitcher ID: 669160 
+[2026-06-29 18:34:11]     → 1479 pitches 
+[2026-06-29 18:34:14]   Pulling pitcher ID: 681517 
+[2026-06-29 18:34:14]     → 1604 pitches 
+[2026-06-29 18:34:17]   Pulling pitcher ID: 677865 
+[2026-06-29 18:34:19]     → 745 pitches 
+[2026-06-29 18:34:22]   Pulling pitcher ID: 694335 
+[2026-06-29 18:34:24]     → 709 pitches 
+[2026-06-29 18:34:27]   Pulling pitcher ID: 592773 
+[2026-06-29 18:34:28]     → 645 pitches 
+[2026-06-29 18:34:31]   Pulling pitcher ID: 668941 
+[2026-06-29 18:34:31]     → 658 pitches 
+[2026-06-29 18:34:34]   Pulling pitcher ID: 700669 
+[2026-06-29 18:34:36]     → 562 pitches 
+[2026-06-29 18:34:39]   Pulling pitcher ID: 676617 
+[2026-06-29 18:34:39]     → 652 pitches 
+[2026-06-29 18:34:42]   Pulling pitcher ID: 666277 
+[2026-06-29 18:34:42]     → 652 pitches 
+[2026-06-29 18:34:45]   Pulling pitcher ID: 690928 
+[2026-06-29 18:34:46]     → 306 pitches 
+[2026-06-29 18:34:49]   Pulling pitcher ID: 681676 
+[2026-06-29 18:34:49]     → 244 pitches 
+[2026-06-29 18:34:52]   Pulling pitcher ID: 688297 
+[2026-06-29 18:34:53]     → 248 pitches 
+[2026-06-29 18:34:56]   Pulling pitcher ID: 690155 
+[2026-06-29 18:34:56]     → 247 pitches 
+[2026-06-29 18:34:59]   Pulling pitcher ID: 694363 
+[2026-06-29 18:34:59]     → 173 pitches 
+[2026-06-29 18:35:02]   Pulling pitcher ID: 691008 
+[2026-06-29 18:35:03]     → 158 pitches 
+[2026-06-29 18:35:06]   Pulling pitcher ID: 802408 
+[2026-06-29 18:35:06]     → 167 pitches 
+[2026-06-29 18:35:09] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260629_183509.csv ( 13921 rows ) 
+[2026-06-29 18:35:09] Scrubbing data... 
+[2026-06-29 18:35:09]   Dropped deprecated columns: 5 
+[2026-06-29 18:35:09]   Deduplication removed: 0 rows 
+[2026-06-29 18:35:09]   Auto-balls removed: 23 rows 
+[2026-06-29 18:35:09]   Pitch outs removed: 2 rows 
+[2026-06-29 18:35:09]   Missing core fields removed: 82 rows 
+[2026-06-29 18:35:09]   Spin outliers removed: 1 rows 
+[2026-06-29 18:35:09]   Pitchers in clean data: 19 
+[2026-06-29 18:35:11]   Clean data saved: 13813 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-06-29 18:35:11] API pull successful. 
+[2026-06-29 18:35:21] ========== Pipeline complete ========== 
+[2026-06-29 18:35:21] ========== Pipeline started ========== 
+[2026-06-29 18:35:21] Attempting API pull from Baseball Savant... 
+[2026-06-29 18:35:21] Starting data pull from Baseball Savant... 
+[2026-06-29 18:35:21]   Pulling pitcher ID: 669467 
+[2026-06-29 18:35:22]     → 1622 pitches 
+[2026-06-29 18:35:25]   Pulling pitcher ID: 669461 
+[2026-06-29 18:35:28]     → 1445 pitches 
+[2026-06-29 18:35:31]   Pulling pitcher ID: 700241 
+[2026-06-29 18:35:32]     → 1605 pitches 
+[2026-06-29 18:35:35]   Pulling pitcher ID: 669160 
+[2026-06-29 18:35:35]     → 1479 pitches 
+[2026-06-29 18:35:38]   Pulling pitcher ID: 681517 
+[2026-06-29 18:35:38]     → 1604 pitches 
+[2026-06-29 18:35:41]   Pulling pitcher ID: 677865 
+[2026-06-29 18:35:41]     → 745 pitches 
+[2026-06-29 18:35:44]   Pulling pitcher ID: 694335 
+[2026-06-29 18:35:44]     → 709 pitches 
+[2026-06-29 18:35:47]   Pulling pitcher ID: 592773 
+[2026-06-29 18:35:49]     → 645 pitches 
+[2026-06-29 18:35:52]   Pulling pitcher ID: 668941 
+[2026-06-29 18:35:53]     → 658 pitches 
+[2026-06-29 18:35:56]   Pulling pitcher ID: 700669 
+[2026-06-29 18:35:56]     → 562 pitches 
+[2026-06-29 18:35:59]   Pulling pitcher ID: 676617 
+[2026-06-29 18:36:01]     → 652 pitches 
+[2026-06-29 18:36:04]   Pulling pitcher ID: 666277 
+[2026-06-29 18:36:04]     → 652 pitches 
+[2026-06-29 18:36:07]   Pulling pitcher ID: 690928 
+[2026-06-29 18:36:07]     → 306 pitches 
+[2026-06-29 18:36:10]   Pulling pitcher ID: 681676 
+[2026-06-29 18:36:11]     → 244 pitches 
+[2026-06-29 18:36:14]   Pulling pitcher ID: 688297 
+[2026-06-29 18:36:14]     → 248 pitches 
+[2026-06-29 18:36:17]   Pulling pitcher ID: 690155 
+[2026-06-29 18:36:17]     → 247 pitches 
+[2026-06-29 18:36:20]   Pulling pitcher ID: 694363 
+[2026-06-29 18:36:21]     → 173 pitches 
+[2026-06-29 18:36:24]   Pulling pitcher ID: 691008 
+[2026-06-29 18:36:24]     → 158 pitches 
+[2026-06-29 18:36:27]   Pulling pitcher ID: 802408 
+[2026-06-29 18:36:28]     → 167 pitches 
+[2026-06-29 18:36:31] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260629_183631.csv ( 13921 rows ) 
+[2026-06-29 18:36:31] Scrubbing data... 
+[2026-06-29 18:36:31]   Dropped deprecated columns: 5 
+[2026-06-29 18:36:31]   Deduplication removed: 0 rows 
+[2026-06-29 18:36:32]   Auto-balls removed: 23 rows 
+[2026-06-29 18:36:32]   Pitch outs removed: 2 rows 
+[2026-06-29 18:36:32]   Missing core fields removed: 82 rows 
+[2026-06-29 18:36:32]   Spin outliers removed: 1 rows 
+[2026-06-29 18:36:32]   Pitchers in clean data: 19 
+[2026-06-29 18:36:33]   Clean data saved: 13813 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-06-29 18:36:33] API pull successful. 
+[2026-06-29 18:36:43] ========== Pipeline complete ========== 

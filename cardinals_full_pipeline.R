@@ -85,26 +85,43 @@ get_pitcher_ids <- function() {
 }
 
 get_roster_status <- function() {
-  # Returns a named list: pitcher_id -> "active", "injured", "40man", or "former"
-  # Called after data is scraped so we know which pitcher IDs appeared in the data
   log_msg("Fetching roster status for all pitcher tiers...")
 
   safe_get <- function(roster_type) {
     tryCatch({
-      r <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = roster_type)
-      as.integer(r$person_id[r$position_abbreviation %in% c("SP","RP","P")])
+      mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = roster_type)
     }, error = function(e) {
       log_msg(paste("Could not fetch", roster_type, "roster:", e$message))
-      integer(0)
+      NULL
     })
   }
 
-  active_ids  <- safe_get("active")
-  injured_ids <- safe_get("injured")
-  full_ids    <- safe_get("fullRoster")
+  active_roster <- safe_get("active")
+  full_roster   <- safe_get("40Man")
 
-  # 40-man = full roster minus active and injured
-  forty_man_ids <- setdiff(full_ids, union(active_ids, injured_ids))
+  # Active pitcher IDs
+  active_ids <- integer(0)
+  if (!is.null(active_roster)) {
+    pitchers <- active_roster[active_roster$position_abbreviation %in% c("SP","RP","P"), ]
+    active_ids <- as.integer(pitchers$person_id)
+  }
+
+  # IL pitcher IDs — on 40Man but status_code indicates injured list
+  injured_ids <- integer(0)
+  forty_man_ids <- integer(0)
+  if (!is.null(full_roster)) {
+    full_pitchers <- full_roster[full_roster$position_abbreviation %in% c("SP","RP","P"), ]
+    # IL players have status_code "D10", "D15", "D60" etc.
+    if ("status_code" %in% names(full_pitchers)) {
+      il_codes <- c("D10","D15","D60","D7","DES")
+      injured_ids   <- as.integer(full_pitchers$person_id[full_pitchers$status_code %in% il_codes])
+      forty_man_ids <- as.integer(full_pitchers$person_id[
+        !full_pitchers$person_id %in% c(active_ids, injured_ids)
+      ])
+    } else {
+      forty_man_ids <- as.integer(setdiff(full_pitchers$person_id, active_ids))
+    }
+  }
 
   log_msg(paste("Roster tiers — Active:", length(active_ids),
                 "| Injured:", length(injured_ids),

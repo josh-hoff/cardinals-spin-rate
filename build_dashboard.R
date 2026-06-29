@@ -35,26 +35,34 @@ build_cardinals_dashboard <- function(
   df$release_speed     <- round(df$release_speed, 1)
   df$game_date         <- as.character(df$game_date)
   df$events            <- ifelse(is.na(df$events), "", as.character(df$events))
-  df$is_home           <- df$home_team == "STL"
-  df$opponent          <- ifelse(df$is_home, df$away_team, df$home_team)
-  df$home_away         <- ifelse(df$is_home, "Home", "Away")
-  df <- df %>%
-    group_by(player_name, game_pk) %>%
-    mutate(
-      entry_inning    = min(inning),
-      entry_outs_when = min(outs_when_up[inning == min(inning)])
-    ) %>%
-    ungroup() %>%
-    mutate(
-      total_outs         = (inning - 1) * 3 + outs_when_up,
-      entry_total_outs   = (entry_inning - 1) * 3 + entry_outs_when,
-      outs_into_outing   = total_outs - entry_total_outs,
-      outing_progression = round(1 + outs_into_outing / 3, 4)
-    )
+
+  # Derive opponent and home_away only if not already in CSV
+  if (!"opponent" %in% names(df) && "home_team" %in% names(df)) {
+    df$is_home   <- df$home_team == "STL"
+    df$opponent  <- ifelse(df$is_home, df$away_team, df$home_team)
+    df$home_away <- ifelse(df$is_home, "Home", "Away")
+  }
+
+  # Derive outing_progression only if not already in CSV
+  if (!"outing_progression" %in% names(df)) {
+    df <- df %>%
+      group_by(player_name, game_pk) %>%
+      mutate(
+        entry_inning    = min(inning),
+        entry_outs_when = min(outs_when_up[inning == min(inning)])
+      ) %>%
+      ungroup() %>%
+      mutate(
+        total_outs         = (inning - 1) * 3 + outs_when_up,
+        entry_total_outs   = (entry_inning - 1) * 3 + entry_outs_when,
+        outs_into_outing   = total_outs - entry_total_outs,
+        outing_progression = round(1 + outs_into_outing / 3, 4)
+      )
+  }
   cols <- c("player_name","pitch_name","inning_numeric","inning","outs_when_up",
             "release_spin_rate","release_speed","description","game_date",
             "game_pk","outing_progression","opponent","home_away","events","pitcher")
-  # Only keep pitcher column if it exists
+  # Only keep columns that exist (clean CSV may have all or subset)
   cols <- cols[cols %in% names(df)]
   df <- df[, cols]
   n_pitches  <- nrow(df)

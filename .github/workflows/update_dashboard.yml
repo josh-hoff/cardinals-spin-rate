@@ -1,45 +1,47 @@
 name: Update Cardinals Dashboard
- 
+
 on:
   schedule:
     - cron: '0 13 * * *'  # 8:00 AM CT (UTC-5) every day
   workflow_dispatch:        # allows manual trigger from GitHub
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
- 
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
- 
+
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.4.1'
- 
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
- 
+
       - name: Install R packages
         run: |
           Rscript -e "install.packages(c('dplyr','jsonlite','remotes'), repos='https://cloud.r-project.org')"
-          Rscript -e "remotes::install_github('BillPetti/baseballr')"
- 
+          Rscript -e "remotes::install_github('BillPetti/baseballr', auth_token = Sys.getenv('GITHUB_PAT'))"
+
       - name: Pull data and build dashboard
         run: |
           Rscript -e "
             source('cardinals_full_pipeline.R')
             run_pipeline()
           "
- 
+
       - name: Deploy dashboard to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: \${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           publish_branch: gh-pages
           include_files: cardinals_dashboard.html
- 

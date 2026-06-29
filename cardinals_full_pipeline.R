@@ -30,30 +30,16 @@ LATEST_CSV   <- file.path(DATA_DIR,    "cardinals_clean_LATEST.csv")
 DASHBOARD    <- file.path(PROJECT_DIR, "cardinals_dashboard.html")
 LOG_FILE     <- file.path(PROJECT_DIR, "pipeline.log")
 
-# Cardinals pitcher MLBAM IDs
-PITCHER_IDS <- c(
-  669467, # Pallante, Andre
-  669461, # Liberatore, Matthew
-  700241, # McGreevy, Michael
-  669160, # May, Dustin
-  681517, # Leahy, Kyle
-  677865, # Bruihl, Justin
-  694335, # Svanson, Matt
-  592773, # Stanek, Ryne
-  668941, # Romero, JoJo
-  700669, # Graceffo, Gordon
-  676617, # O'Brien, Riley
-  666277, # Soriano, George
-  690928, # Dobbins, Hunter
-  681676, # Fernandez, Ryan
-  688297, # Roycroft, Chris
-  690155, # Pushard, Matt
-  694363, # Shuster, Jared
-  691008, # Rajcic, Max
-  802408  # Mautz, Brycen
-)
+# Cardinals team ID (STL = 138 in MLB API)
+TEAM_ID <- 138
+SEASON  <- 2026
 
-SEASON <- 2026
+# Fallback pitcher IDs in case roster API fails
+FALLBACK_IDS <- c(
+  669467, 669461, 700241, 669160, 681517, 677865, 694335, 592773,
+  668941, 700669, 676617, 666277, 690928, 681676, 688297, 690155,
+  694363, 691008, 802408
+)
 
 
 # ── STEP 1: INSTALL PACKAGES ──────────────────────────────────────────────────
@@ -83,15 +69,65 @@ library(dplyr)
 library(jsonlite)
 
 
-# ── STEP 2: PULL DATA FROM BASEBALL SAVANT ────────────────────────────────────
+# ── DYNAMIC ROSTER LOOKUP ─────────────────────────────────────────────────────
+get_pitcher_ids <- function() {
+  log_msg("Fetching current Cardinals pitching roster from MLB API...")
+  tryCatch({
+    roster <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = "active")
+    pitchers <- roster[roster$position_abbreviation %in% c("SP","RP","P"), ]
+    ids <- as.integer(pitchers$person_id)
+    log_msg(paste("Found", length(ids), "pitchers on active roster"))
+    return(ids)
+  }, error = function(e) {
+    log_msg(paste("Roster lookup failed, using fallback IDs:", e$message))
+    return(FALLBACK_IDS)
+  })
+}
+
+get_roster_status <- function() {
+  # Returns a named list: pitcher_id -> "active", "injured", "40man", or "former"
+  # Called after data is scraped so we know which pitcher IDs appeared in the data
+  log_msg("Fetching roster status for all pitcher tiers...")
+
+  safe_get <- function(roster_type) {
+    tryCatch({
+      r <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = roster_type)
+      as.integer(r$person_id[r$position_abbreviation %in% c("SP","RP","P")])
+    }, error = function(e) {
+      log_msg(paste("Could not fetch", roster_type, "roster:", e$message))
+      integer(0)
+    })
+  }
+
+  active_ids  <- safe_get("active")
+  injured_ids <- safe_get("injured")
+  full_ids    <- safe_get("fullRoster")
+
+  # 40-man = full roster minus active and injured
+  forty_man_ids <- setdiff(full_ids, union(active_ids, injured_ids))
+
+  log_msg(paste("Roster tiers — Active:", length(active_ids),
+                "| Injured:", length(injured_ids),
+                "| 40-Man:", length(forty_man_ids)))
+
+  list(
+    active    = active_ids,
+    injured   = injured_ids,
+    forty_man = forty_man_ids
+  )
+}
+
 pull_cardinals_data <- function() {
   log_msg("Starting data pull from Baseball Savant...")
   
   if (!dir.exists(DATA_DIR)) dir.create(DATA_DIR, recursive = TRUE)
+
+  # Get current roster dynamically
+  pitcher_ids <- get_pitcher_ids()
   
   all_pitches <- list()
   
-  for (id in PITCHER_IDS) {
+  for (id in pitcher_ids) {
     log_msg(paste("  Pulling pitcher ID:", id))
     tryCatch({
       df <- statcast_search(
@@ -411,10 +447,14 @@ run_pipeline <- function() {
 
   # ── Build dashboard ──────────────────────────────────────────────────────────
   tryCatch({
+    # Fetch roster status for pitcher tier coloring
+    roster_status <- get_roster_status()
+
     source(file.path(PROJECT_DIR, "build_dashboard.R"))
     build_cardinals_dashboard(
-      clean_csv   = LATEST_CSV,
-      output_html = DASHBOARD
+      clean_csv      = LATEST_CSV,
+      output_html    = DASHBOARD,
+      roster_status  = roster_status
     )
     log_msg("========== Pipeline complete ==========")
   }, error = function(e) {

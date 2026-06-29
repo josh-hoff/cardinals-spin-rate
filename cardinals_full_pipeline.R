@@ -16,9 +16,14 @@
 
 
 # ── CONFIGURATION ─────────────────────────────────────────────────────────────
-# Set this to the folder where you want data and the dashboard saved.
-# Use the full path to your project folder.
-PROJECT_DIR <- "C:/Users/joshh/OneDrive/Desktop/Coding Projects/cardinals"
+# Automatically detects whether running on GitHub Actions or locally
+if (nchar(Sys.getenv("GITHUB_ACTIONS")) > 0) {
+  # Running on GitHub Actions — use the repo root
+  PROJECT_DIR <- Sys.getenv("GITHUB_WORKSPACE")
+} else {
+  # Running locally — set this to your local cardinals folder
+  PROJECT_DIR <- "C:/Users/joshh/OneDrive/Desktop/Coding Projects/cardinals"
+}
 
 DATA_DIR     <- file.path(PROJECT_DIR, "cardinals_data")
 LATEST_CSV   <- file.path(DATA_DIR,    "cardinals_clean_LATEST.csv")
@@ -229,7 +234,7 @@ select{height:36px;padding:0 10px;border-radius:8px;border:1px solid #ccc;backgr
 <body>
 <h1>Cardinals pitching &#8212; spin rate by inning</h1>
 <div class="sub">', n_pitches, ' pitches &middot; ', date_min, ' &ndash; ', date_max,
-                 ' &middot; ', n_pitchers, ' pitchers &middot; last updated ', generated, '</div>
+' &middot; ', n_pitchers, ' pitchers &middot; last updated ', generated, '</div>
 <div class="controls">
   <div class="cg"><label>Pitcher</label><select id="pSel"></select></div>
   <div class="cg"><label>Pitch type</label><select id="ptSel"></select></div>
@@ -381,7 +386,7 @@ render();
 # ── STEP 5: FULL PIPELINE ─────────────────────────────────────────────────────
 run_pipeline <- function() {
   log_msg("========== Pipeline started ==========")
-  
+
   # ── Try API first ────────────────────────────────────────────────────────────
   api_success <- FALSE
   tryCatch({
@@ -393,7 +398,7 @@ run_pipeline <- function() {
   }, error = function(e) {
     log_msg(paste("API pull failed:", e$message))
   })
-  
+
   # ── Fall back to CSV if API failed ───────────────────────────────────────────
   if (!api_success) {
     if (file.exists(LATEST_CSV)) {
@@ -403,7 +408,7 @@ run_pipeline <- function() {
       return(invisible(NULL))
     }
   }
-  
+
   # ── Build dashboard ──────────────────────────────────────────────────────────
   tryCatch({
     source(file.path(PROJECT_DIR, "build_dashboard.R"))
@@ -420,7 +425,7 @@ run_pipeline <- function() {
 
 # ── STEP 6: SCHEDULE DAILY AT 8:00 AM ────────────────────────────────────────
 schedule_pipeline <- function() {
-  
+
   # ── Mac / Linux (uses cronR) ───────────────────────────────────────────────
   if (.Platform$OS.type == "unix") {
     library(cronR)
@@ -447,7 +452,7 @@ schedule_pipeline <- function() {
     message("To view scheduled jobs: cron_ls()")
     message("To remove:             cron_rm('cardinals_pipeline')")
     
-    # ── Windows (uses taskscheduleR) ───────────────────────────────────────────
+  # ── Windows (uses taskscheduleR) ───────────────────────────────────────────
   } else {
     if (!requireNamespace("taskscheduleR", quietly = TRUE))
       install.packages("taskscheduleR", repos = "https://cloud.r-project.org")

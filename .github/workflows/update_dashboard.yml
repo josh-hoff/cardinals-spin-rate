@@ -1,31 +1,49 @@
 name: Update Cardinals Dashboard
+
 on:
   schedule:
-    - cron: '0 13 * * *'
-  workflow_dispatch:
+    - cron: '0 13 * * *'  # 8:00 AM CT (UTC-5) every day
+  workflow_dispatch:        # allows manual trigger from GitHub
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.4.1'
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install R packages
         run: |
           Rscript -e "install.packages(c('dplyr','jsonlite','remotes'), repos='https://cloud.r-project.org')"
           Rscript -e "remotes::install_github('BillPetti/baseballr', auth_token = Sys.getenv('GITHUB_PAT'))"
+
       - name: Pull data and build dashboard
         run: |
-          Rscript -e "source('cardinals_full_pipeline.R'); run_pipeline()"
+          Rscript -e "
+            source('cardinals_full_pipeline.R')
+            cat('Testing roster API...\n')
+            library(baseballr)
+            r <- tryCatch(mlb_rosters(team_id=138, season=2026, roster_type='active'), error=function(e) { cat('ERROR:', e\$message, '\n'); NULL })
+            if (!is.null(r)) { cat('Active roster columns:', paste(names(r), collapse=', '), '\n'); cat('Active pitchers:', nrow(r[r\$position_abbreviation %in% c('SP','RP','P'),]), '\n') }
+            r40 <- tryCatch(mlb_rosters(team_id=138, season=2026, roster_type='40Man'), error=function(e) { cat('ERROR 40Man:', e\$message, '\n'); NULL })
+            if (!is.null(r40)) { cat('40Man roster columns:', paste(names(r40), collapse=', '), '\n'); cat('status_code values:', paste(unique(r40\$status_code), collapse=', '), '\n') }
+            run_pipeline()
+          "
+
       - name: Deploy dashboard to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

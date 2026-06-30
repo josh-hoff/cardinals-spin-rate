@@ -72,16 +72,36 @@ library(jsonlite)
 # ── DYNAMIC ROSTER LOOKUP ─────────────────────────────────────────────────────
 get_pitcher_ids <- function() {
   log_msg("Fetching current Cardinals pitching roster from MLB API...")
-  tryCatch({
+  active_ids <- tryCatch({
     roster <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = "active")
     pitchers <- roster[roster$position_abbreviation %in% c("SP","RP","P"), ]
     ids <- as.integer(pitchers$person_id)
     log_msg(paste("Found", length(ids), "pitchers on active roster"))
-    return(ids)
+    ids
   }, error = function(e) {
-    log_msg(paste("Roster lookup failed, using fallback IDs:", e$message))
-    return(FALLBACK_IDS)
+    log_msg(paste("Active roster lookup failed:", e$message))
+    integer(0)
   })
+
+  forty_man_ids <- tryCatch({
+    roster <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = "40Man")
+    pitchers <- roster[roster$position_abbreviation %in% c("SP","RP","P"), ]
+    as.integer(pitchers$person_id)
+  }, error = function(e) {
+    log_msg(paste("40-man roster lookup failed:", e$message))
+    integer(0)
+  })
+
+  # Combine active + 40-man + fallback IDs (covers former players who appeared in 2026 data)
+  all_ids <- unique(c(active_ids, forty_man_ids, FALLBACK_IDS))
+
+  if (length(all_ids) == 0) {
+    log_msg("All roster lookups failed, using fallback IDs only")
+    return(FALLBACK_IDS)
+  }
+
+  log_msg(paste("Total pitcher IDs to pull (active + 40-man + fallback):", length(all_ids)))
+  return(all_ids)
 }
 
 get_roster_status <- function() {
@@ -106,14 +126,13 @@ get_roster_status <- function() {
     active_ids <- as.integer(pitchers$person_id)
   }
 
-  # IL pitcher IDs — on 40Man but status_code indicates injured list
+  # IL pitcher IDs — D15/D60 = injured list, RM = restricted/minors (40-man, not IL)
   injured_ids <- integer(0)
   forty_man_ids <- integer(0)
   if (!is.null(full_roster)) {
     full_pitchers <- full_roster[full_roster$position_abbreviation %in% c("SP","RP","P"), ]
-    # IL players have status_code "D10", "D15", "D60" etc.
     if ("status_code" %in% names(full_pitchers)) {
-      il_codes <- c("D10","D15","D60","D7","DES")
+      il_codes <- c("D15","D60","D10","D7")
       injured_ids   <- as.integer(full_pitchers$person_id[full_pitchers$status_code %in% il_codes])
       forty_man_ids <- as.integer(full_pitchers$person_id[
         !full_pitchers$person_id %in% c(active_ids, injured_ids)

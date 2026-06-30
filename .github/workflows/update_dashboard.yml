@@ -34,17 +34,6 @@ jobs:
       - name: Pull data and build dashboard
         run: |
           Rscript -e "
-            library(baseballr)
-            library(dplyr)
-            library(jsonlite)
-            cat('Testing active roster...\n')
-            r_active <- tryCatch(mlb_rosters(team_id=138, season=2026, roster_type='active'), error=function(e){cat('ERROR active:',e\$message,'\n');NULL})
-            if(!is.null(r_active)){cat('Columns:',paste(names(r_active),collapse=','),'\n');cat('Rows:',nrow(r_active),'\n');print(head(r_active[,c('person_id','person_full_name','position_abbreviation','status_code')],5))}
-            cat('Testing 40Man roster...\n')
-            r_40 <- tryCatch(mlb_rosters(team_id=138, season=2026, roster_type='40Man'), error=function(e){cat('ERROR 40Man:',e\$message,'\n');NULL})
-            if(!is.null(r_40)){cat('Columns:',paste(names(r_40),collapse=','),'\n');cat('Rows:',nrow(r_40),'\n');cat('Unique status_code:',paste(unique(r_40\$status_code),collapse=','),'\n');print(r_40[,c('person_id','person_full_name','position_abbreviation','status_code')])}
-          "
-          Rscript -e "
             source('cardinals_full_pipeline.R')
             run_pipeline()
           "

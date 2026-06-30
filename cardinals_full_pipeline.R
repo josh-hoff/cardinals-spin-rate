@@ -83,28 +83,38 @@ get_pitcher_ids <- function() {
     integer(0)
   })
 
-  forty_man_ids <- tryCatch({
+  # MLB-level status codes (excludes RM = reassigned to minors)
+  mlb_status_codes <- c("A","D7","D10","D15","D60","PL","BL","FL","FML")
+
+  # Only include 40-man pitchers who have actually pitched in MLB for STL this season
+  # We determine this by checking against FALLBACK_IDS (known MLB pitchers for STL)
+  # This correctly includes Mautz, Dobbins (RM but have pitched in MLB)
+  # and excludes Hjerpe, Roby, Hence, Fitts (RM and no MLB appearances for STL)
+  forty_man_mlb_ids <- tryCatch({
     roster <- mlb_rosters(team_id = TEAM_ID, season = SEASON, roster_type = "40Man")
     pitchers <- roster[roster$position_abbreviation %in% c("SP","RP","P"), ]
-    as.integer(pitchers$person_id)
+    # Keep anyone who is either in FALLBACK_IDS (has pitched for STL) or has MLB status code
+    mlb_pitchers <- pitchers[pitchers$person_id %in% FALLBACK_IDS | 
+                               pitchers$status_code %in% mlb_status_codes, ]
+    as.integer(mlb_pitchers$person_id)
   }, error = function(e) {
     log_msg(paste("40-man roster lookup failed:", e$message))
     integer(0)
   })
 
-  # Combine active + 40-man + fallback IDs (covers former players who appeared in 2026 data)
-  all_ids <- unique(c(active_ids, forty_man_ids, FALLBACK_IDS))
+  # Combine active + MLB-status 40-man + fallback IDs (covers former players)
+  all_ids <- unique(c(active_ids, forty_man_mlb_ids, FALLBACK_IDS))
 
   if (length(all_ids) == 0) {
     log_msg("All roster lookups failed, using fallback IDs only")
     return(FALLBACK_IDS)
   }
 
-  log_msg(paste("Total pitcher IDs to pull (active + 40-man + fallback):", length(all_ids)))
+  log_msg(paste("Total pitcher IDs to pull:", length(all_ids)))
   return(all_ids)
 }
 
-get_roster_status <- function() {
+get_roster_status <- function(data_pitcher_ids = integer(0)) {
   log_msg("Fetching roster status for all pitcher tiers...")
 
   safe_get <- function(roster_type) {
@@ -122,28 +132,30 @@ get_roster_status <- function() {
   # Active pitcher IDs
   active_ids <- integer(0)
   if (!is.null(active_roster)) {
-    pitchers <- active_roster[active_roster$position_abbreviation %in% c("SP","RP","P"), ]
+    pitchers   <- active_roster[active_roster$position_abbreviation %in% c("SP","RP","P"), ]
     active_ids <- as.integer(pitchers$person_id)
   }
 
-  # IL pitcher IDs — D15/D60 = injured list, RM = restricted/minors (40-man, not IL)
-  injured_ids <- integer(0)
+  # IL/Leave list covers all IL types plus paternity, bereavement, family medical
+  il_codes <- c("D7","D10","D15","D60","PL","BL","FL","FML")
+
+  injured_ids   <- integer(0)
   forty_man_ids <- integer(0)
   if (!is.null(full_roster)) {
     full_pitchers <- full_roster[full_roster$position_abbreviation %in% c("SP","RP","P"), ]
-    if ("status_code" %in% names(full_pitchers)) {
-      il_codes <- c("D15","D60","D10","D7")
-      injured_ids   <- as.integer(full_pitchers$person_id[full_pitchers$status_code %in% il_codes])
-      forty_man_ids <- as.integer(full_pitchers$person_id[
-        !full_pitchers$person_id %in% c(active_ids, injured_ids)
-      ])
+    non_active    <- full_pitchers[!full_pitchers$person_id %in% active_ids, ]
+    if ("status_code" %in% names(non_active)) {
+      injured_ids <- as.integer(non_active$person_id[non_active$status_code %in% il_codes])
+      rm_pitchers <- non_active[!non_active$person_id %in% injured_ids, ]
+      # For RM pitchers, only include those who have actually appeared in MLB data this season
+      forty_man_ids <- as.integer(rm_pitchers$person_id[rm_pitchers$person_id %in% data_pitcher_ids])
     } else {
-      forty_man_ids <- as.integer(setdiff(full_pitchers$person_id, active_ids))
+      forty_man_ids <- as.integer(non_active$person_id[non_active$person_id %in% data_pitcher_ids])
     }
   }
 
   log_msg(paste("Roster tiers — Active:", length(active_ids),
-                "| Injured:", length(injured_ids),
+                "| IL/Leave:", length(injured_ids),
                 "| 40-Man:", length(forty_man_ids)))
 
   list(
@@ -485,8 +497,10 @@ run_pipeline <- function() {
 
   # ── Build dashboard ──────────────────────────────────────────────────────────
   tryCatch({
-    # Fetch roster status for pitcher tier coloring
-    roster_status <- get_roster_status()
+    # Fetch roster status — pass in pitcher IDs from actual data to cross-check RM players
+    clean_data <- read.csv(LATEST_CSV, stringsAsFactors = FALSE)
+    data_pitcher_ids <- unique(as.integer(clean_data$pitcher[!is.na(clean_data$pitcher)]))
+    roster_status <- get_roster_status(data_pitcher_ids)
 
     source(file.path(PROJECT_DIR, "build_dashboard.R"))
     build_cardinals_dashboard(

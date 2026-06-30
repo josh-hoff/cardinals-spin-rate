@@ -167,7 +167,7 @@ pull_cardinals_data <- function() {
     log_msg(paste("  Pulling pitcher ID:", id))
     tryCatch({
       df <- statcast_search(
-        start_date = paste0(SEASON, "-03-01"),
+        start_date = paste0(SEASON, "-03-25"),
         end_date   = Sys.Date(),
         playerid   = id,
         player_type = "pitcher"

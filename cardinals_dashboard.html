@@ -115,7 +115,6 @@ window.ROSTER_STATUS={"active":[669467,669160,666277,668941,677865,681517,694335
 const BY_PITCHER={};
 const PITCHER_ID_MAP={};
 window.CARDINALS_DATA.forEach(r=>{if(!BY_PITCHER[r[0]])BY_PITCHER[r[0]]=[];BY_PITCHER[r[0]].push(r);if(r[14]&&!PITCHER_ID_MAP[r[0]])PITCHER_ID_MAP[r[0]]=r[14];});
-console.log("ROSTER_STATUS:",window.ROSTER_STATUS);console.log("PITCHER_ID_MAP:",PITCHER_ID_MAP);
 const COLORS={"4-Seam Fastball":"#2a78d6","Sinker":"#1baf7a","Slider":"#eda100","Sweeper":"#eb6834","Changeup":"#e34948","Curveball":"#4a3aa7","Cutter":"#e87ba4","Knuckle Curve":"#008300","Split-Finger":"#888780"};
 const DISPLAY={"Pallante, Andre":"Andre Pallante","Liberatore, Matthew":"Matthew Liberatore","McGreevy, Michael":"Michael McGreevy","May, Dustin":"Dustin May","Leahy, Kyle":"Kyle Leahy","Bruihl, Justin":"Justin Bruihl","Svanson, Matt":"Matt Svanson","Stanek, Ryne":"Ryne Stanek","Romero, JoJo":"JoJo Romero","Graceffo, Gordon":"Gordon Graceffo","O'Brien, Riley":"Riley O'Brien","Soriano, George":"George Soriano","Dobbins, Hunter":"Hunter Dobbins","Fernandez, Ryan":"Ryan Fernandez","Roycroft, Chris":"Chris Roycroft","Pushard, Matt":"Matt Pushard","Shuster, Jared":"Jared Shuster","Rajcic, Max":"Max Rajcic","Mautz, Brycen":"Brycen Mautz"};
 const WHIFF=["swinging_strike","swinging_strike_blocked","foul_tip","missed_bunt","bunt_foul_tip"];
@@ -156,7 +155,7 @@ function addDivider(label){const div=document.createElement("option");div.disabl
 const STATUS_BG={active:"#ffffff",injured:"#ffd6d6",fortyMan:"#d6deff",former:"#e8e8e8"};
 const STATUS_COLOR={active:"#0b0b0b",injured:"#7a1f1f",fortyMan:"#1a2d5a",former:"#4a4a4a"};
 const grouped={active:[],injured:[],fortyMan:[],former:[]};
-pitchers.forEach(p=>{const s=getPitcherStatus(p);const key=s==="40man"?"fortyMan":s;grouped[key].push(p);});
+pitchers.forEach(p=>{const s=getPitcherStatus(p);const key=s==="40man"?"fortyMan":s;if(grouped[key])grouped[key].push(p);else grouped.former.push(p);});
 function addPitcherOpts(list,status){list.forEach(p=>{const o=document.createElement("option");o.value=p;o.textContent=DISPLAY[p]||p;o.style.background=STATUS_BG[status];o.style.color=STATUS_COLOR[status];pSel.appendChild(o);});}
 addDivider("Active Roster");addPitcherOpts(grouped.active,"active");
 if(grouped.injured.length){addDivider("IL / Leave List");addPitcherOpts(grouped.injured,"injured");}

@@ -1,129 +1,129 @@
-[2026-08-03 16:01:14] Installing package: cronR 
-[2026-08-03 16:01:23] ========== Pipeline started ========== 
-[2026-08-03 16:01:23] Attempting API pull from Baseball Savant... 
-[2026-08-03 16:01:23] Starting data pull from Baseball Savant... 
-[2026-08-03 16:01:23] Fetching current Cardinals pitching roster from MLB API... 
-[2026-08-03 16:01:23] Found 13 pitchers on active roster 
-[2026-08-03 16:01:23] Total pitcher IDs to pull: 22 
-[2026-08-03 16:01:23]   Pulling pitcher ID: 669467 
-[2026-08-03 16:01:28]     → 1915 pitches 
-[2026-08-03 16:01:31]   Pulling pitcher ID: 669160 
-[2026-08-03 16:01:36]     → 1752 pitches 
-[2026-08-03 16:01:39]   Pulling pitcher ID: 666277 
-[2026-08-03 16:01:58]     → 799 pitches 
-[2026-08-03 16:02:01]   Pulling pitcher ID: 700669 
-[2026-08-03 16:02:04]     → 817 pitches 
-[2026-08-03 16:02:07]   Pulling pitcher ID: 677865 
-[2026-08-03 16:02:24]     → 913 pitches 
-[2026-08-03 16:02:27]   Pulling pitcher ID: 681517 
-[2026-08-03 16:02:32]     → 1770 pitches 
-[2026-08-03 16:02:35]   Pulling pitcher ID: 703725 
-[2026-08-03 16:02:36]     → 191 pitches 
-[2026-08-03 16:02:39]   Pulling pitcher ID: 669461 
-[2026-08-03 16:02:43]     → 1821 pitches 
-[2026-08-03 16:02:46]   Pulling pitcher ID: 700241 
-[2026-08-03 16:02:51]     → 1840 pitches 
-[2026-08-03 16:02:54]   Pulling pitcher ID: 657265 
-[2026-08-03 16:02:56]     → 77 pitches 
-[2026-08-03 16:02:59]   Pulling pitcher ID: 687273 
-[2026-08-03 16:03:02]     → 97 pitches 
-[2026-08-03 16:03:05]   Pulling pitcher ID: 676617 
-[2026-08-03 16:03:09]     → 754 pitches 
-[2026-08-03 16:03:12]   Pulling pitcher ID: 592773 
-[2026-08-03 16:03:15]     → 789 pitches 
-[2026-08-03 16:03:18]   Pulling pitcher ID: 802408 
-[2026-08-03 16:03:19]     → 59 pitches 
-[2026-08-03 16:03:22]   Pulling pitcher ID: 690928 
-[2026-08-03 16:03:25]     → 569 pitches 
-[2026-08-03 16:03:28]   Pulling pitcher ID: 668941 
-[2026-08-03 16:03:32]     → 729 pitches 
-[2026-08-03 16:03:35]   Pulling pitcher ID: 694335 
-[2026-08-03 16:03:39]     → 788 pitches 
-[2026-08-03 16:03:42]   Pulling pitcher ID: 691008 
-[2026-08-03 16:03:44]     → 163 pitches 
-[2026-08-03 16:03:47]   Pulling pitcher ID: 681676 
-[2026-08-03 16:03:48]     → 236 pitches 
-[2026-08-03 16:03:51]   Pulling pitcher ID: 688297 
-[2026-08-03 16:03:55]     → 350 pitches 
-[2026-08-03 16:03:58]   Pulling pitcher ID: 690155 
-[2026-08-03 16:03:59]     → 120 pitches 
-[2026-08-03 16:04:02]   Pulling pitcher ID: 694363 
-[2026-08-03 16:04:04]     → 172 pitches 
-[2026-08-03 16:04:08] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260803_160407.csv ( 16721 rows ) 
-[2026-08-03 16:04:08] Scrubbing data... 
-[2026-08-03 16:04:08]   Dropped deprecated columns: 5 
-[2026-08-03 16:04:08]   Deduplication removed: 0 rows 
-[2026-08-03 16:04:08]   Auto-balls removed: 44 rows 
-[2026-08-03 16:04:08]   Pitch outs removed: 2 rows 
-[2026-08-03 16:04:08]   Missing core fields removed: 9 rows 
-[2026-08-03 16:04:08]   Spin outliers removed: 1 rows 
-[2026-08-03 16:04:08]   Pitchers in clean data: 22 
-[2026-08-03 16:04:10]   Clean data saved: 16665 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
-[2026-08-03 16:04:10] API pull successful. 
-[2026-08-03 16:04:10] Fetching roster status for all pitcher tiers... 
-[2026-08-03 16:04:11] Roster tiers — Active: 13 | IL/Leave: 2 | 40-Man: 4 
-[2026-08-03 16:04:22] ========== Pipeline complete ========== 
-[2026-08-03 16:04:22] ========== Pipeline started ========== 
-[2026-08-03 16:04:22] Attempting API pull from Baseball Savant... 
-[2026-08-03 16:04:22] Starting data pull from Baseball Savant... 
-[2026-08-03 16:04:22] Fetching current Cardinals pitching roster from MLB API... 
-[2026-08-03 16:04:22] Found 13 pitchers on active roster 
-[2026-08-03 16:04:23] Total pitcher IDs to pull: 22 
-[2026-08-03 16:04:23]   Pulling pitcher ID: 669467 
-[2026-08-03 16:04:24]     → 1915 pitches 
-[2026-08-03 16:04:27]   Pulling pitcher ID: 669160 
-[2026-08-03 16:04:27]     → 1752 pitches 
-[2026-08-03 16:04:30]   Pulling pitcher ID: 666277 
-[2026-08-03 16:04:31]     → 799 pitches 
-[2026-08-03 16:04:34]   Pulling pitcher ID: 700669 
-[2026-08-03 16:04:34]     → 817 pitches 
-[2026-08-03 16:04:37]   Pulling pitcher ID: 677865 
-[2026-08-03 16:04:38]     → 913 pitches 
-[2026-08-03 16:04:41]   Pulling pitcher ID: 681517 
-[2026-08-03 16:04:41]     → 1770 pitches 
-[2026-08-03 16:04:44]   Pulling pitcher ID: 703725 
-[2026-08-03 16:04:44]     → 191 pitches 
-[2026-08-03 16:04:47]   Pulling pitcher ID: 669461 
-[2026-08-03 16:04:47]     → 1821 pitches 
-[2026-08-03 16:04:50]   Pulling pitcher ID: 700241 
-[2026-08-03 16:04:52]     → 1840 pitches 
-[2026-08-03 16:04:55]   Pulling pitcher ID: 657265 
-[2026-08-03 16:04:55]     → 77 pitches 
-[2026-08-03 16:04:58]   Pulling pitcher ID: 687273 
-[2026-08-03 16:04:58]     → 97 pitches 
-[2026-08-03 16:05:01]   Pulling pitcher ID: 676617 
-[2026-08-03 16:05:02]     → 754 pitches 
-[2026-08-03 16:05:05]   Pulling pitcher ID: 592773 
-[2026-08-03 16:05:05]     → 789 pitches 
-[2026-08-03 16:05:08]   Pulling pitcher ID: 802408 
-[2026-08-03 16:05:08]     → 59 pitches 
-[2026-08-03 16:05:11]   Pulling pitcher ID: 690928 
-[2026-08-03 16:05:11]     → 569 pitches 
-[2026-08-03 16:05:14]   Pulling pitcher ID: 668941 
-[2026-08-03 16:05:14]     → 729 pitches 
-[2026-08-03 16:05:17]   Pulling pitcher ID: 694335 
-[2026-08-03 16:05:17]     → 788 pitches 
-[2026-08-03 16:05:20]   Pulling pitcher ID: 691008 
-[2026-08-03 16:05:21]     → 163 pitches 
-[2026-08-03 16:05:24]   Pulling pitcher ID: 681676 
-[2026-08-03 16:05:24]     → 236 pitches 
-[2026-08-03 16:05:27]   Pulling pitcher ID: 688297 
-[2026-08-03 16:05:27]     → 350 pitches 
-[2026-08-03 16:05:30]   Pulling pitcher ID: 690155 
-[2026-08-03 16:05:30]     → 120 pitches 
-[2026-08-03 16:05:33]   Pulling pitcher ID: 694363 
-[2026-08-03 16:05:33]     → 172 pitches 
-[2026-08-03 16:05:37] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260803_160536.csv ( 16721 rows ) 
-[2026-08-03 16:05:37] Scrubbing data... 
-[2026-08-03 16:05:37]   Dropped deprecated columns: 5 
-[2026-08-03 16:05:37]   Deduplication removed: 0 rows 
-[2026-08-03 16:05:37]   Auto-balls removed: 44 rows 
-[2026-08-03 16:05:37]   Pitch outs removed: 2 rows 
-[2026-08-03 16:05:37]   Missing core fields removed: 9 rows 
-[2026-08-03 16:05:37]   Spin outliers removed: 1 rows 
-[2026-08-03 16:05:37]   Pitchers in clean data: 22 
-[2026-08-03 16:05:39]   Clean data saved: 16665 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
-[2026-08-03 16:05:39] API pull successful. 
-[2026-08-03 16:05:39] Fetching roster status for all pitcher tiers... 
-[2026-08-03 16:05:39] Roster tiers — Active: 13 | IL/Leave: 2 | 40-Man: 4 
-[2026-08-03 16:05:51] ========== Pipeline complete ========== 
+[2026-08-04 15:30:23] Installing package: cronR 
+[2026-08-04 15:30:31] ========== Pipeline started ========== 
+[2026-08-04 15:30:31] Attempting API pull from Baseball Savant... 
+[2026-08-04 15:30:31] Starting data pull from Baseball Savant... 
+[2026-08-04 15:30:31] Fetching current Cardinals pitching roster from MLB API... 
+[2026-08-04 15:30:31] Found 13 pitchers on active roster 
+[2026-08-04 15:30:31] Total pitcher IDs to pull: 22 
+[2026-08-04 15:30:31]   Pulling pitcher ID: 669467 
+[2026-08-04 15:30:36]     → 1915 pitches 
+[2026-08-04 15:30:39]   Pulling pitcher ID: 666277 
+[2026-08-04 15:30:43]     → 817 pitches 
+[2026-08-04 15:30:46]   Pulling pitcher ID: 700669 
+[2026-08-04 15:30:48]     → 841 pitches 
+[2026-08-04 15:30:51]   Pulling pitcher ID: 690928 
+[2026-08-04 15:30:53]     → 569 pitches 
+[2026-08-04 15:30:56]   Pulling pitcher ID: 677865 
+[2026-08-04 15:31:00]     → 937 pitches 
+[2026-08-04 15:31:03]   Pulling pitcher ID: 681517 
+[2026-08-04 15:31:07]     → 1770 pitches 
+[2026-08-04 15:31:10]   Pulling pitcher ID: 703725 
+[2026-08-04 15:31:12]     → 191 pitches 
+[2026-08-04 15:31:15]   Pulling pitcher ID: 669461 
+[2026-08-04 15:31:21]     → 1821 pitches 
+[2026-08-04 15:31:24]   Pulling pitcher ID: 700241 
+[2026-08-04 15:31:30]     → 1931 pitches 
+[2026-08-04 15:31:33]   Pulling pitcher ID: 657265 
+[2026-08-04 15:31:34]     → 77 pitches 
+[2026-08-04 15:31:37]   Pulling pitcher ID: 687273 
+[2026-08-04 15:31:40]     → 97 pitches 
+[2026-08-04 15:31:43]   Pulling pitcher ID: 676617 
+[2026-08-04 15:31:46]     → 754 pitches 
+[2026-08-04 15:31:49]   Pulling pitcher ID: 592773 
+[2026-08-04 15:31:54]     → 800 pitches 
+[2026-08-04 15:31:57]   Pulling pitcher ID: 802408 
+[2026-08-04 15:31:59]     → 59 pitches 
+[2026-08-04 15:32:02]   Pulling pitcher ID: 694335 
+[2026-08-04 15:32:05]     → 788 pitches 
+[2026-08-04 15:32:08]   Pulling pitcher ID: 691008 
+[2026-08-04 15:32:09]     → 163 pitches 
+[2026-08-04 15:32:12]   Pulling pitcher ID: 681676 
+[2026-08-04 15:32:14]     → 236 pitches 
+[2026-08-04 15:32:17]   Pulling pitcher ID: 669160 
+[2026-08-04 15:32:22]     → 1752 pitches 
+[2026-08-04 15:32:25]   Pulling pitcher ID: 668941 
+[2026-08-04 15:32:29]     → 729 pitches 
+[2026-08-04 15:32:32]   Pulling pitcher ID: 688297 
+[2026-08-04 15:32:35]     → 350 pitches 
+[2026-08-04 15:32:38]   Pulling pitcher ID: 690155 
+[2026-08-04 15:32:40]     → 120 pitches 
+[2026-08-04 15:32:43]   Pulling pitcher ID: 694363 
+[2026-08-04 15:32:45]     → 172 pitches 
+[2026-08-04 15:32:49] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260804_153248.csv ( 16889 rows ) 
+[2026-08-04 15:32:49] Scrubbing data... 
+[2026-08-04 15:32:49]   Dropped deprecated columns: 5 
+[2026-08-04 15:32:49]   Deduplication removed: 0 rows 
+[2026-08-04 15:32:49]   Auto-balls removed: 44 rows 
+[2026-08-04 15:32:49]   Pitch outs removed: 2 rows 
+[2026-08-04 15:32:49]   Missing core fields removed: 9 rows 
+[2026-08-04 15:32:49]   Spin outliers removed: 1 rows 
+[2026-08-04 15:32:49]   Pitchers in clean data: 22 
+[2026-08-04 15:32:50]   Clean data saved: 16833 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-08-04 15:32:50] API pull successful. 
+[2026-08-04 15:32:51] Fetching roster status for all pitcher tiers... 
+[2026-08-04 15:32:51] Roster tiers — Active: 13 | IL/Leave: 1 | 40-Man: 3 
+[2026-08-04 15:33:06] ========== Pipeline complete ========== 
+[2026-08-04 15:33:06] ========== Pipeline started ========== 
+[2026-08-04 15:33:06] Attempting API pull from Baseball Savant... 
+[2026-08-04 15:33:06] Starting data pull from Baseball Savant... 
+[2026-08-04 15:33:06] Fetching current Cardinals pitching roster from MLB API... 
+[2026-08-04 15:33:06] Found 13 pitchers on active roster 
+[2026-08-04 15:33:06] Total pitcher IDs to pull: 22 
+[2026-08-04 15:33:06]   Pulling pitcher ID: 669467 
+[2026-08-04 15:33:07]     → 1915 pitches 
+[2026-08-04 15:33:10]   Pulling pitcher ID: 666277 
+[2026-08-04 15:33:11]     → 817 pitches 
+[2026-08-04 15:33:14]   Pulling pitcher ID: 700669 
+[2026-08-04 15:33:15]     → 841 pitches 
+[2026-08-04 15:33:18]   Pulling pitcher ID: 690928 
+[2026-08-04 15:33:18]     → 569 pitches 
+[2026-08-04 15:33:21]   Pulling pitcher ID: 677865 
+[2026-08-04 15:33:21]     → 937 pitches 
+[2026-08-04 15:33:24]   Pulling pitcher ID: 681517 
+[2026-08-04 15:33:26]     → 1770 pitches 
+[2026-08-04 15:33:29]   Pulling pitcher ID: 703725 
+[2026-08-04 15:33:29]     → 191 pitches 
+[2026-08-04 15:33:32]   Pulling pitcher ID: 669461 
+[2026-08-04 15:33:32]     → 1821 pitches 
+[2026-08-04 15:33:35]   Pulling pitcher ID: 700241 
+[2026-08-04 15:33:35]     → 1931 pitches 
+[2026-08-04 15:33:38]   Pulling pitcher ID: 657265 
+[2026-08-04 15:33:39]     → 77 pitches 
+[2026-08-04 15:33:42]   Pulling pitcher ID: 687273 
+[2026-08-04 15:33:42]     → 97 pitches 
+[2026-08-04 15:33:45]   Pulling pitcher ID: 676617 
+[2026-08-04 15:33:45]     → 754 pitches 
+[2026-08-04 15:33:48]   Pulling pitcher ID: 592773 
+[2026-08-04 15:33:49]     → 800 pitches 
+[2026-08-04 15:33:52]   Pulling pitcher ID: 802408 
+[2026-08-04 15:33:52]     → 59 pitches 
+[2026-08-04 15:33:55]   Pulling pitcher ID: 694335 
+[2026-08-04 15:33:55]     → 788 pitches 
+[2026-08-04 15:33:58]   Pulling pitcher ID: 691008 
+[2026-08-04 15:33:58]     → 163 pitches 
+[2026-08-04 15:34:01]   Pulling pitcher ID: 681676 
+[2026-08-04 15:34:01]     → 236 pitches 
+[2026-08-04 15:34:04]   Pulling pitcher ID: 669160 
+[2026-08-04 15:34:05]     → 1752 pitches 
+[2026-08-04 15:34:08]   Pulling pitcher ID: 668941 
+[2026-08-04 15:34:09]     → 729 pitches 
+[2026-08-04 15:34:12]   Pulling pitcher ID: 688297 
+[2026-08-04 15:34:12]     → 350 pitches 
+[2026-08-04 15:34:15]   Pulling pitcher ID: 690155 
+[2026-08-04 15:34:15]     → 120 pitches 
+[2026-08-04 15:34:18]   Pulling pitcher ID: 694363 
+[2026-08-04 15:34:18]     → 172 pitches 
+[2026-08-04 15:34:21] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260804_153421.csv ( 16889 rows ) 
+[2026-08-04 15:34:21] Scrubbing data... 
+[2026-08-04 15:34:21]   Dropped deprecated columns: 5 
+[2026-08-04 15:34:22]   Deduplication removed: 0 rows 
+[2026-08-04 15:34:22]   Auto-balls removed: 44 rows 
+[2026-08-04 15:34:22]   Pitch outs removed: 2 rows 
+[2026-08-04 15:34:22]   Missing core fields removed: 9 rows 
+[2026-08-04 15:34:22]   Spin outliers removed: 1 rows 
+[2026-08-04 15:34:22]   Pitchers in clean data: 22 
+[2026-08-04 15:34:23]   Clean data saved: 16833 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-08-04 15:34:23] API pull successful. 
+[2026-08-04 15:34:24] Fetching roster status for all pitcher tiers... 
+[2026-08-04 15:34:24] Roster tiers — Active: 13 | IL/Leave: 1 | 40-Man: 3 
+[2026-08-04 15:34:38] ========== Pipeline complete ========== 

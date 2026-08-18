@@ -1,110 +1,133 @@
-[2026-08-17 13:45:23] Installing package: baseballr 
-[2026-08-17 13:50:06] Installing package: cronR 
-[2026-08-17 13:50:14] ========== Pipeline started ========== 
-[2026-08-17 13:50:14] Attempting API pull from Baseball Savant... 
-[2026-08-17 13:50:14] Starting data pull from Baseball Savant... 
-[2026-08-17 13:50:14] Fetching current Cardinals pitching roster from MLB API... 
-[2026-08-17 13:50:15] Found 14 pitchers on active roster 
-[2026-08-17 13:50:15] Total pitcher IDs to pull: 23 
-[2026-08-17 13:50:15]   Pulling pitcher ID: 669467 
-[2026-08-17 13:50:25]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:25]   Pulling pitcher ID: 657571 
-[2026-08-17 13:50:29]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:29]   Pulling pitcher ID: 666277 
-[2026-08-17 13:50:35]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:35]   Pulling pitcher ID: 700669 
-[2026-08-17 13:50:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:38]   Pulling pitcher ID: 690928 
-[2026-08-17 13:50:40]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:40]   Pulling pitcher ID: 677865 
-[2026-08-17 13:50:44]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:44]   Pulling pitcher ID: 681517 
-[2026-08-17 13:50:50]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:50]   Pulling pitcher ID: 703725 
-[2026-08-17 13:50:52]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:52]   Pulling pitcher ID: 669461 
-[2026-08-17 13:50:55]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:50:55]   Pulling pitcher ID: 700241 
-[2026-08-17 13:51:00]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:00]   Pulling pitcher ID: 657265 
-[2026-08-17 13:51:02]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:02]   Pulling pitcher ID: 687273 
-[2026-08-17 13:51:03]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:03]   Pulling pitcher ID: 676617 
-[2026-08-17 13:51:08]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:08]   Pulling pitcher ID: 592773 
-[2026-08-17 13:51:11]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:11]   Pulling pitcher ID: 802408 
-[2026-08-17 13:51:12]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:12]   Pulling pitcher ID: 694335 
-[2026-08-17 13:51:16]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:16]   Pulling pitcher ID: 691008 
-[2026-08-17 13:51:17]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:17]   Pulling pitcher ID: 681676 
-[2026-08-17 13:51:19]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:19]   Pulling pitcher ID: 669160 
-[2026-08-17 13:51:26]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:26]   Pulling pitcher ID: 668941 
-[2026-08-17 13:51:29]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:29]   Pulling pitcher ID: 688297 
-[2026-08-17 13:51:31]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:31]   Pulling pitcher ID: 690155 
-[2026-08-17 13:51:32]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:32]   Pulling pitcher ID: 694363 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36] API pull failed: No data pulled — check your internet connection. 
-[2026-08-17 13:51:36] PIPELINE ERROR: API failed and no fallback CSV found. Aborting. 
-[2026-08-17 13:51:36] ========== Pipeline started ========== 
-[2026-08-17 13:51:36] Attempting API pull from Baseball Savant... 
-[2026-08-17 13:51:36] Starting data pull from Baseball Savant... 
-[2026-08-17 13:51:36] Fetching current Cardinals pitching roster from MLB API... 
-[2026-08-17 13:51:36] Found 14 pitchers on active roster 
-[2026-08-17 13:51:36] Total pitcher IDs to pull: 23 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 669467 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 657571 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 666277 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 700669 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 690928 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 677865 
-[2026-08-17 13:51:36]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:36]   Pulling pitcher ID: 681517 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 703725 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 669461 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 700241 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 657265 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 687273 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 676617 
-[2026-08-17 13:51:37]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:37]   Pulling pitcher ID: 592773 
-[2026-08-17 13:51:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:38]   Pulling pitcher ID: 802408 
-[2026-08-17 13:51:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:38]   Pulling pitcher ID: 694335 
-[2026-08-17 13:51:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:38]   Pulling pitcher ID: 691008 
-[2026-08-17 13:51:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:38]   Pulling pitcher ID: 681676 
-[2026-08-17 13:51:38]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:38]   Pulling pitcher ID: 669160 
-[2026-08-17 13:51:39]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:39]   Pulling pitcher ID: 668941 
-[2026-08-17 13:51:39]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:39]   Pulling pitcher ID: 688297 
-[2026-08-17 13:51:39]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:39]   Pulling pitcher ID: 690155 
-[2026-08-17 13:51:39]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:39]   Pulling pitcher ID: 694363 
-[2026-08-17 13:51:39]     ERROR: Can't assign 92 names to a 119-column data.table 
-[2026-08-17 13:51:39] API pull failed: No data pulled — check your internet connection. 
-[2026-08-17 13:51:39] PIPELINE ERROR: API failed and no fallback CSV found. Aborting. 
+[2026-08-18 13:49:46] Installing package: cronR 
+[2026-08-18 13:49:54] ========== Pipeline started ========== 
+[2026-08-18 13:49:54] Attempting API pull from Baseball Savant... 
+[2026-08-18 13:49:54] Starting data pull from Baseball Savant... 
+[2026-08-18 13:49:54] Fetching current Cardinals pitching roster from MLB API... 
+[2026-08-18 13:49:54] Found 14 pitchers on active roster 
+[2026-08-18 13:49:54] Total pitcher IDs to pull: 23 
+[2026-08-18 13:49:54]   Pulling pitcher ID: 669467 
+[2026-08-18 13:50:01]     → 2203 pitches 
+[2026-08-18 13:50:04]   Pulling pitcher ID: 657571 
+[2026-08-18 13:50:06]     → 524 pitches 
+[2026-08-18 13:50:09]   Pulling pitcher ID: 666277 
+[2026-08-18 13:50:14]     → 914 pitches 
+[2026-08-18 13:50:17]   Pulling pitcher ID: 700669 
+[2026-08-18 13:50:23]     → 918 pitches 
+[2026-08-18 13:50:26]   Pulling pitcher ID: 690928 
+[2026-08-18 13:50:29]     → 854 pitches 
+[2026-08-18 13:50:32]   Pulling pitcher ID: 677865 
+[2026-08-18 13:50:38]     → 1022 pitches 
+[2026-08-18 13:50:41]   Pulling pitcher ID: 681517 
+[2026-08-18 13:50:49]     → 1933 pitches 
+[2026-08-18 13:50:52]   Pulling pitcher ID: 703725 
+[2026-08-18 13:50:54]     → 292 pitches 
+[2026-08-18 13:50:57]   Pulling pitcher ID: 669461 
+[2026-08-18 13:51:01]     → 2010 pitches 
+[2026-08-18 13:51:04]   Pulling pitcher ID: 700241 
+[2026-08-18 13:51:09]     → 2135 pitches 
+[2026-08-18 13:51:12]   Pulling pitcher ID: 657265 
+[2026-08-18 13:51:13]     → 189 pitches 
+[2026-08-18 13:51:16]   Pulling pitcher ID: 687273 
+[2026-08-18 13:51:17]     → 192 pitches 
+[2026-08-18 13:51:20]   Pulling pitcher ID: 676617 
+[2026-08-18 13:51:24]     → 834 pitches 
+[2026-08-18 13:51:27]   Pulling pitcher ID: 592773 
+[2026-08-18 13:51:31]     → 868 pitches 
+[2026-08-18 13:51:34]   Pulling pitcher ID: 802408 
+[2026-08-18 13:51:36]     → 59 pitches 
+[2026-08-18 13:51:39]   Pulling pitcher ID: 694335 
+[2026-08-18 13:51:44]     → 788 pitches 
+[2026-08-18 13:51:47]   Pulling pitcher ID: 691008 
+[2026-08-18 13:51:48]     → 163 pitches 
+[2026-08-18 13:51:51]   Pulling pitcher ID: 681676 
+[2026-08-18 13:51:53]     → 236 pitches 
+[2026-08-18 13:51:56]   Pulling pitcher ID: 669160 
+[2026-08-18 13:52:01]     → 1932 pitches 
+[2026-08-18 13:52:04]   Pulling pitcher ID: 668941 
+[2026-08-18 13:52:09]     → 729 pitches 
+[2026-08-18 13:52:12]   Pulling pitcher ID: 688297 
+[2026-08-18 13:52:15]     → 411 pitches 
+[2026-08-18 13:52:18]   Pulling pitcher ID: 690155 
+[2026-08-18 13:52:19]     → 120 pitches 
+[2026-08-18 13:52:22]   Pulling pitcher ID: 694363 
+[2026-08-18 13:52:24]     → 172 pitches 
+[2026-08-18 13:52:27] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260818_135227.csv ( 19498 rows ) 
+[2026-08-18 13:52:27] Scrubbing data... 
+[2026-08-18 13:52:27]   Dropped deprecated columns: 5 
+[2026-08-18 13:52:28]   Deduplication removed: 0 rows 
+[2026-08-18 13:52:28]   Auto-balls removed: 53 rows 
+[2026-08-18 13:52:28]   Pitch outs removed: 3 rows 
+[2026-08-18 13:52:28]   Missing core fields removed: 10 rows 
+[2026-08-18 13:52:28]   Spin outliers removed: 1 rows 
+[2026-08-18 13:52:28]   Pitchers in clean data: 23 
+[2026-08-18 13:52:29]   Clean data saved: 19431 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-08-18 13:52:29] API pull successful. 
+[2026-08-18 13:52:30] Fetching roster status for all pitcher tiers... 
+[2026-08-18 13:52:30] Roster tiers — Active: 14 | IL/Leave: 1 | 40-Man: 3 
+[2026-08-18 13:52:46] ========== Pipeline complete ========== 
+[2026-08-18 13:52:46] ========== Pipeline started ========== 
+[2026-08-18 13:52:46] Attempting API pull from Baseball Savant... 
+[2026-08-18 13:52:46] Starting data pull from Baseball Savant... 
+[2026-08-18 13:52:46] Fetching current Cardinals pitching roster from MLB API... 
+[2026-08-18 13:52:46] Found 14 pitchers on active roster 
+[2026-08-18 13:52:46] Total pitcher IDs to pull: 23 
+[2026-08-18 13:52:46]   Pulling pitcher ID: 669467 
+[2026-08-18 13:52:46]     → 2203 pitches 
+[2026-08-18 13:52:49]   Pulling pitcher ID: 657571 
+[2026-08-18 13:52:50]     → 524 pitches 
+[2026-08-18 13:52:53]   Pulling pitcher ID: 666277 
+[2026-08-18 13:52:53]     → 914 pitches 
+[2026-08-18 13:52:56]   Pulling pitcher ID: 700669 
+[2026-08-18 13:52:56]     → 918 pitches 
+[2026-08-18 13:52:59]   Pulling pitcher ID: 690928 
+[2026-08-18 13:53:00]     → 854 pitches 
+[2026-08-18 13:53:03]   Pulling pitcher ID: 677865 
+[2026-08-18 13:53:03]     → 1022 pitches 
+[2026-08-18 13:53:06]   Pulling pitcher ID: 681517 
+[2026-08-18 13:53:07]     → 1933 pitches 
+[2026-08-18 13:53:10]   Pulling pitcher ID: 703725 
+[2026-08-18 13:53:10]     → 292 pitches 
+[2026-08-18 13:53:13]   Pulling pitcher ID: 669461 
+[2026-08-18 13:53:15]     → 2010 pitches 
+[2026-08-18 13:53:18]   Pulling pitcher ID: 700241 
+[2026-08-18 13:53:18]     → 2135 pitches 
+[2026-08-18 13:53:21]   Pulling pitcher ID: 657265 
+[2026-08-18 13:53:21]     → 189 pitches 
+[2026-08-18 13:53:24]   Pulling pitcher ID: 687273 
+[2026-08-18 13:53:24]     → 192 pitches 
+[2026-08-18 13:53:27]   Pulling pitcher ID: 676617 
+[2026-08-18 13:53:28]     → 834 pitches 
+[2026-08-18 13:53:31]   Pulling pitcher ID: 592773 
+[2026-08-18 13:53:31]     → 868 pitches 
+[2026-08-18 13:53:34]   Pulling pitcher ID: 802408 
+[2026-08-18 13:53:34]     → 59 pitches 
+[2026-08-18 13:53:37]   Pulling pitcher ID: 694335 
+[2026-08-18 13:53:37]     → 788 pitches 
+[2026-08-18 13:53:40]   Pulling pitcher ID: 691008 
+[2026-08-18 13:53:41]     → 163 pitches 
+[2026-08-18 13:53:44]   Pulling pitcher ID: 681676 
+[2026-08-18 13:53:44]     → 236 pitches 
+[2026-08-18 13:53:47]   Pulling pitcher ID: 669160 
+[2026-08-18 13:53:48]     → 1932 pitches 
+[2026-08-18 13:53:51]   Pulling pitcher ID: 668941 
+[2026-08-18 13:53:52]     → 729 pitches 
+[2026-08-18 13:53:55]   Pulling pitcher ID: 688297 
+[2026-08-18 13:53:55]     → 411 pitches 
+[2026-08-18 13:53:58]   Pulling pitcher ID: 690155 
+[2026-08-18 13:53:58]     → 120 pitches 
+[2026-08-18 13:54:01]   Pulling pitcher ID: 694363 
+[2026-08-18 13:54:01]     → 172 pitches 
+[2026-08-18 13:54:05] Raw data saved: /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_raw_20260818_135404.csv ( 19498 rows ) 
+[2026-08-18 13:54:05] Scrubbing data... 
+[2026-08-18 13:54:05]   Dropped deprecated columns: 5 
+[2026-08-18 13:54:05]   Deduplication removed: 0 rows 
+[2026-08-18 13:54:05]   Auto-balls removed: 53 rows 
+[2026-08-18 13:54:05]   Pitch outs removed: 3 rows 
+[2026-08-18 13:54:05]   Missing core fields removed: 10 rows 
+[2026-08-18 13:54:05]   Spin outliers removed: 1 rows 
+[2026-08-18 13:54:05]   Pitchers in clean data: 23 
+[2026-08-18 13:54:06]   Clean data saved: 19431 pitches → /home/runner/work/cardinals-spin-rate/cardinals-spin-rate/cardinals_data/cardinals_clean_LATEST.csv 
+[2026-08-18 13:54:06] API pull successful. 
+[2026-08-18 13:54:07] Fetching roster status for all pitcher tiers... 
+[2026-08-18 13:54:07] Roster tiers — Active: 14 | IL/Leave: 1 | 40-Man: 3 
+[2026-08-18 13:54:23] ========== Pipeline complete ========== 
